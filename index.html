@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<!--
+    Spectral by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>SHiELD in a box</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="landing is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <header id="header" class="alt">
+    <h1><a href="index.html">SHiELD in a Box</a></h1>
+    <nav id="nav">
+      <ul>
+        <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#quickstart">Quickstart</a></li>
+          </ul>
+        </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <section id="banner">
+    <div class="inner">
+      <h2>SHiELD in a Box</h2>
+      <p>Unified System for Weather-to-Seasonal Prediction<br />
+      Easy Use<br />
+      Collaborative Research<br /></p>
+      <!--<ul class="actions special">
+            <li><a href="#" class="button primary">Activate</a></li>
+          </ul> -->
+    </div>
+    <a href="#one" class="more scrolly">Learn More</a>
+  </section>
+
+  <!-- One -->
+  <section id="one" class="wrapper style5 special">
+    <div class="inner">
+      <header class="major">
+        <h2>When SHiELD meets Container Technology</h2>
+        <p style="text-align: left;">SHiELD (System for High-resolution prediction on Earth-to-Local Domains) is a unified atmospheric model supporting various configurations, including severe weather nowcasting, hurricane forecasting, and subseasonal-to-seasonal prediction.
+        </p>
+
+        <p style="text-align: left;">
+        SHiELD has become easy to use, thanks to container technology. Better yet, SHiELD can runs on all major operating systems (Windows, macOS, and Linux), as well as on the cloud.
+        </p>
+
+        <p style="text-align: left;">
+        Container technology leverages the flexibility of SHiELD and opens many possibilities for research and education.
+        </p>
+      </header>
+    </div>
+  </section>
+
+  <!-- Two -->
+  <section id="two" class="wrapper alt style5">
+    <section class="spotlight">
+      <div class="image"><img src="images/shield.jpg" alt="" /></div><div class="content">
+        <h2>SHiELD</h2>
+
+        <p><ul><li><a href="https://ufscommunity.org/">Unified Forecast System (UFS)</a> prototype atmosphere model.</li></ul></p>
+
+        <p><ul><li>“One code, one executable, one workflow” for weather-to-seasonal prediction. SHiELD can be a global, a global-nest, or a regional model.</li></ul></p>
+
+        <p><ul><li>FV3 Dynamical Core provides a powerful foundation for unified prediction modeling.</li></ul></p>
+
+        <p>
+        <a href="https://www.gfdl.noaa.gov/shield/">Learn more</a>
+        </p>
+
+      </div>
+    </section>
+
+    <section class="spotlight">
+      <div class="image"><img src="images/dock_container_export_cargo_0.jpg" alt="" /></div><div class="content">
+        <h2>Container</h2>
+
+        <p><ul><li>A container is a stand-alone, software artifact that packages applications (e.g., an atmospheric model) for portability.</li></ul></p>
+
+        <p><ul><li>Model installation made easy. No need to worry about environmental variables and library dependencies.</li></ul></p>
+
+        <p><ul><li>Model becomes portable, from laptop to cloud.</li></ul></p>
+
+        <p><ul><li>Ensure bitwise identical results, regardless of different computing systems.</li></ul></p>
+
+        <p>
+        <a href="https://en.wikipedia.org/wiki/OS-level_virtualization" >Learn more about container</a> on Wikipedia.
+        </p>
+
+      </div>
+    </section>
+
+    <section class="spotlight">
+      <div class="image"><img src="images/box.png" alt="" /></div><div class="content">
+        <h2>Containerization of SHiELD</h2>
+
+        <p><ul><li>SHiELD and its dependencies are packaged using <a href="https://www.docker.com/">Docker</a>. </li></ul></p>
+
+        <p><ul><li>Designed for collaboration. No proprietary software is used.</li></ul></p>
+
+        <p><ul><li>Parallelism in mind. Support Message Passing Interface (MPI) and OpenMP.</li></ul></p>
+
+        <p><ul><li>High performance computer (HPC) ready. Seamless deployment on HPCs through <a href="https://sylabs.io/">Singularity</a>.</li></ul></p>
+
+        <p>
+        Learn more in <a href="https://gmd.copernicus.org/articles/15/1097/2022/gmd-15-1097-2022.html" >Cheng et al. (2022)</a>.
+        </p>
+      </div>
+    </section>
+
+
+  </section>
+
+  <!-- Three -->
+  <section id="quickstart" class="wrapper style5 special">
+    <div class="inner">
+      <header class="major">
+        <h2>Your path to unified modeling systems starts here</h2>
+        <p>Try out running SHiELD on your computer.</p>
+        <p>Conduct Hurricane Laura simulation in just three steps.</p>
+        <p><b>Choose your preferred container platform:</b></p>
+      </header>
+
+      <ul class="features">
+        <li>
+        <p><figure>
+          <a href="https://www.docker.com/" style="border-bottom:None">
+            <img src="images/docker.Icons.Default" alt="" " style="width:30%" />
+          </a>
+        </figure></p>
+
+        <p style="text-align: center;">
+        Most popular container platform
+        </p>
+
+        <h4>1. Install</h4>
+        <pre><code>docker pull gfdlfv3/shield</code></pre>
+        
+        <h4>2. Download</h4>
+        <p>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/regional_Laura.zip">Hurricane Laura case</a><br>
+        <a href="https://zenodo.org/record/5090124/files/GFS_fix.zip">GFS fix files</a><br>
+        </p>
+
+        <h4>3. Run</h4>
+        <pre><code>docker run --cap-add=SYS_PTRACE --ulimit='stack=-1:-1' -v PATH_OF_CASE:/rundir -v PATH_OF_GFSFIX:/GFS_fix -it gfdlfv3/shield mpirun -np 2 SHiELD_nh.prod.32bit.x</code></pre>
+        </code></pre>
+        </li>
+
+        <li>
+        <p><figure>
+          <a href="https://sylabs.io/" style="border-bottom:None">
+            <img src="images/singularity.png" alt="" href="https://www.docker.com/" style="width:25.5%" />
+          </a>
+        </figure></p>
+      
+        <p style="text-align: center;">
+        Designed for supercomputer
+        </p>
+        
+        <h4>1. Install</h4>
+        <pre><code>singularity pull docker://gfdlfv3/shield</code></pre>
+        
+        <h4>2. Download</h4>
+        <p>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/regional_Laura.zip">Hurricane Laura case</a><br>
+        <a href="https://zenodo.org/record/5090124/files/GFS_fix.zip">GFS fix files</a><br>
+        </p>
+        
+        <h4>3. Run</h4>
+        <pre><code>cd PATH_OF_CASE
+singularity exec --no-home --bind PATH_OF_GFSFIX:/GFS_fix PATH_OF_IMAGE mpirun -np 2 SHiELD_nh.prod.32bit.x</code></pre>
+        </li>
+      </ul>
+
+      <ul>
+        <li style="text-align: left;">
+        PATH_OF_CASE: absolute path of the case folder (e.g., /home/fv3/regional_Laura); PATH_OF_GFSFIX: absolute path of the GFS fix folder; PATH_OF_IMAGE: absolute path of the Singularity image (e.g., /home/fv3/shield_latest.sif).
+        </li>
+        <li style="text-align: left;">
+        This one-hour simulation should finish in a few minutes on x86 systems. It may take much longer on ARM systems (e.g., Apple M1).
+        </li>
+        <li style="text-align: left;">
+        Guide for FV3 and configuration (namelist) can be found <a href="https://www.gfdl.noaa.gov/wp-content/uploads/2020/02/FV3-Technical-Description.pdf">here</a>.
+        </li>
+        <li style="text-align: left;">
+        This workflow can be applied to any simulations. Simply modify the content in above case folder with your desired case. We recommend using <a href="https://github.com/NOAA-EMC/UFS_UTILS">UFS UTILS</a> to generate initial/boundary conditions. 
+        </li>
+        <li style="text-align: left;">
+        An example of a global-nest simulation can be downloaded <a href="https://kaiyuanc.mycpanel.princeton.edu/global_nest_Laura.zip">here</a>. 
+        </li>
+        <li style="text-align: left;">
+        Docker recipe can be found <a href="https://github.com/kaiyuan-cheng/SHiELD_container">here</a>. 
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer id="footer">
+    <ul class="icons">
+      <li><a href="mailto:oar.gfdl.fv3_dycore_support@noaa.gov" class="icon solid fa-envelope"><span class="label">Email</span> FV3 Dycore Support</a></li>
+    </ul>
+    <ul class="copyright">
+      <li>&copy; 2022 GFDL <a href="https://www.gfdl.noaa.gov/fv3/fv3-the-team/">FV3 Team</a></li><li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </footer>
+
+</div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
