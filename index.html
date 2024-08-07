@@ -133,7 +133,7 @@
       <header class="major">
         <h2>Your path to unified modeling systems starts here</h2>
         <p>Try out running SHiELD on your computer.</p>
-        <p>Conduct Hurricane Laura simulation in just three steps.</p>
+        <p>Conduct Hurricane Ida <i>global-nest</i> simulation in just three steps.</p>
         <p><b>Choose your preferred container platform:</b></p>
       </header>
 
@@ -154,12 +154,12 @@
         
         <h4>2. Download</h4>
         <p>
-        <a href="https://kaiyuanc.mycpanel.princeton.edu/regional_Laura.zip">Hurricane Laura case</a><br>
-        <a href="https://zenodo.org/record/5090124/files/GFS_fix.zip">GFS fix files</a><br>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/global_nest_Ida.zip">Hurricane Ida case</a><br>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/GFS_fix.zip">GFS fix files</a><br>
         </p>
 
         <h4>3. Run</h4>
-        <pre><code>docker run --cap-add=SYS_PTRACE --ulimit='stack=-1:-1' -v PATH_OF_CASE:/rundir -v PATH_OF_GFSFIX:/GFS_fix -it gfdlfv3/shield mpirun -np 2 SHiELD_nh.prod.32bit.x</code></pre>
+        <pre><code>docker run --cap-add=SYS_PTRACE --ulimit='stack=-1:-1' -v PATH_OF_CASE:/rundir -v PATH_OF_GFSFIX:/GFS_fix -it gfdlfv3/shield mpirun -np 8 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
         </code></pre>
         </li>
 
@@ -179,31 +179,28 @@
         
         <h4>2. Download</h4>
         <p>
-        <a href="https://kaiyuanc.mycpanel.princeton.edu/regional_Laura.zip">Hurricane Laura case</a><br>
-        <a href="https://zenodo.org/record/5090124/files/GFS_fix.zip">GFS fix files</a><br>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/global_nest_Ida.zip">Hurricane Ida case</a><br>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/GFS_fix.zip">GFS fix files</a><br>
         </p>
         
         <h4>3. Run</h4>
         <pre><code>cd PATH_OF_CASE
-singularity exec --no-home --bind PATH_OF_GFSFIX:/GFS_fix PATH_OF_IMAGE mpirun -np 2 SHiELD_nh.prod.32bit.x</code></pre>
+singularity exec --no-home --bind PATH_OF_GFSFIX:/GFS_fix PATH_OF_IMAGE mpirun -np 8 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
         </li>
       </ul>
 
       <ul>
         <li style="text-align: left;">
-        PATH_OF_CASE: absolute path of the case folder (e.g., /home/fv3/regional_Laura); PATH_OF_GFSFIX: absolute path of the GFS fix folder; PATH_OF_IMAGE: absolute path of the Singularity image (e.g., /home/fv3/shield_latest.sif).
+        PATH_OF_CASE: absolute path of the case folder (e.g., /home/fv3/global_nest_Ida); PATH_OF_GFSFIX: absolute path of the GFS fix folder; PATH_OF_IMAGE: absolute path of the Singularity image (e.g., /home/fv3/shield_latest.sif).
         </li>
         <li style="text-align: left;">
-        This one-hour simulation should finish in a few minutes on x86 systems. It may take much longer on ARM systems (e.g., Apple M1).
+        This three-hour simulation should finish in a few minutes on x86 systems, e.g., Intel Core i7-12700.
         </li>
         <li style="text-align: left;">
         Guide for FV3 and configuration (namelist) can be found <a href="https://www.gfdl.noaa.gov/wp-content/uploads/2020/02/FV3-Technical-Description.pdf">here</a>.
         </li>
         <li style="text-align: left;">
         This workflow can be applied to any simulations. Simply modify the content in above case folder with your desired case. We recommend using <a href="https://github.com/NOAA-EMC/UFS_UTILS">UFS UTILS</a> to generate initial/boundary conditions. 
-        </li>
-        <li style="text-align: left;">
-        An example of a global-nest simulation can be downloaded <a href="https://kaiyuanc.mycpanel.princeton.edu/global_nest_Laura.zip">here</a>. 
         </li>
         <li style="text-align: left;">
         Docker recipe can be found <a href="https://github.com/kaiyuan-cheng/SHiELD_container">here</a>. 
