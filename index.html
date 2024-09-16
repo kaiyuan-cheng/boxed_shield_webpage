@@ -133,7 +133,7 @@
       <header class="major">
         <h2>Your path to unified modeling systems starts here</h2>
         <p></p>
-        <p>Easily set up and run the full SHiELD workflow on your local computer or HPC cluster.</p>
+        <p>Easily set up and run the full SHiELD workflow (three stages) on your local computer or HPC cluster.</p>
         <p><b>Choose your preferred container platform:</b></p>
       </header>
 
@@ -162,17 +162,27 @@
           -v "/PATH_TO_/GFSvOPER:/GFSvOPER" \
           gfdlfv3/preprocessing</code></pre>
 
+        <br>
         <h4>2. Model Execution</h4>
        
-        <p>a)</p>
+        <p>a) Download image from DockerHub:</p>
         <pre><code>docker pull gfdlfv3/shield</code></pre>
 
-        <p>b)</p>
-        <p>b) Set up mounts, following these <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow/blob/main/preprocessing/instructions.md">instructions.</a></p>
+        <p>b) Set up mounts (<b>rundir</b>, <b>GFS_fix</b>) with these <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow/blob/main/SHiELD/instructions.md">instructions.</a></p>
 
-        <h4>3. Run</h4>
-        <pre><code>docker run --cap-add=SYS_PTRACE --ulimit='stack=-1:-1' -v PATH_OF_CASE:/rundir -v PATH_OF_GFSFIX:/GFS_fix -it gfdlfv3/shield mpirun -np 8 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
-        </code></pre>
+        <p>c) Run:</p>
+        <pre><code>docker run -it --cap-add=SYS_PTRACE --ulimit='stack=-1:-1' \
+          -v "/PATH_TO_/2022010100_C48/:/rundir" \
+          -v "/PATH_TO_/GFS_fix/:/GFS_fix" \
+          -it gfdlfv3/shield mpirun -np 6 -oversubscribe SHiELD_nh.prod.32bit.x%</code></pre>
+
+        <h4>3. Postprocessing</h4>
+
+        <p>a) Download image from DockerHub:</p>
+        <pre><code>docker pull gfdlfv3/visualization</code></pre>
+
+        <p>b) Follow these <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow/blob/main/visualization/instructions.md">instructions.</a></p>
+        
         </li>
 
         <li>
@@ -201,19 +211,24 @@
           preprocessing_latest.sif /PATH_TO_/preprocessing_entrypoint.sh</code></pre>
 
 
+        <br>
 
+        <h4>2. Model Execution</h4>
+       
+        <p>a) Download image from DockerHub:</p>
+        <pre><code>apptainer pull docker://gfdlfv3/shield</code></pre>
 
+        <p>b) Set up mounts (<b>rundir</b>, <b>GFS_fix</b>) with these <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow/blob/main/SHiELD/instructions.md">instructions.</a></p>
 
+        <p>c) Run:</p>
+        <pre><code>apptainer exec --bind
+          /PATH_TO_/2022010100_C48/:/rundir,
+          /PATH_TO_/GFS_fix/:/GFS_fix
+          shield_latest.sif cd /rundir && mpirun -np 6 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
 
-        <h4>2. Download</h4>
-        <p>
-        <a href="https://kaiyuanc.mycpanel.princeton.edu/global_nest_Ida.zip">Hurricane Ida case</a><br>
-        <a href="https://kaiyuanc.mycpanel.princeton.edu/GFS_fix.zip">GFS fix files</a><br>
-        </p>
         
-        <h4>3. Run</h4>
-        <pre><code>cd PATH_OF_CASE
-singularity exec --no-home --bind PATH_OF_GFSFIX:/GFS_fix PATH_OF_IMAGE mpirun -np 8 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
+        <h4>3. Postprocessing</h4>
+        <p>Currently unavailable for HPCs.</p>
         </li>
       </ul>
 
