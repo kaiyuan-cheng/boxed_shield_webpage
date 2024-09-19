@@ -168,20 +168,25 @@
         <p>a) Download image from DockerHub:</p>
         <pre><code>docker pull gfdlfv3/shield</code></pre>
 
-        <p>b) Set up mounts (<b>rundir</b>, <b>GFS_fix</b>) with these <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow/blob/main/SHiELD/instructions.md">instructions.</a></p>
+        <p>b) Set up mounts (<b>rundir</b>, <b>GFS_fix</b>) with an example:</p>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/global_nest_Ida.zip">Hurricane Ida case</a><br>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/GFS_fix.zip">GFS fix files</a><br>
+        <p></p>
 
         <p>c) Run:</p>
         <pre><code>docker run -it --cap-add=SYS_PTRACE --ulimit='stack=-1:-1' \
-          -v "/PATH_TO_/2022010100_C48/:/rundir" \
+          -v "/PATH_TO_/global_nest_Ida/:/rundir" \
           -v "/PATH_TO_/GFS_fix/:/GFS_fix" \
           -it gfdlfv3/shield mpirun -np 6 -oversubscribe SHiELD_nh.prod.32bit.x%</code></pre>
 
         <h4>3. Postprocessing</h4>
 
         <p>a) Download image from DockerHub:</p>
-        <pre><code>docker pull gfdlfv3/visualization</code></pre>
+        <pre><code>docker pull gfdlfv3/fre-nctools</code></pre>
 
-        <p>b) Follow these <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow/blob/main/visualization/instructions.md">instructions.</a></p>
+        <p>b) Continue with the Hurricane Ida example by remapping C96 data onto 1- by 1-degree latitude-longitude grid.</a></p>
+
+        <pre><code>docker run -v /PATH_TO/global_nest_Ida/:/workdir gfdlfv3/fre-nctools fregrid --input_mosaic ./INPUT/C96_coarse_mosaic.nc --nlon 360 --nlat 180 --interp_method conserve_order1 --input_file atmos_sos --output_file atmos_sos_ltd.nc --scalar_field PRMSL,TMP2m,DPT2m,PRATEsfc,ULWRFtoa</code></pre>
         
         </li>
 
@@ -208,7 +213,7 @@
           /PATH_TO_/fix:/UFS_UTILS/fix,
           /PATH_TO_/workdir:/workdir,
           /PATH_TO_/GFSvOPER:/GFSvOPER
-          preprocessing_latest.sif /PATH_TO_/preprocessing_entrypoint.sh</code></pre>
+          /PATH_TO/preprocessing_latest.sif /PATH_TO_/preprocessing_entrypoint.sh</code></pre>
 
 
         <br>
@@ -218,13 +223,16 @@
         <p>a) Download image from DockerHub:</p>
         <pre><code>apptainer pull docker://gfdlfv3/shield</code></pre>
 
-        <p>b) Set up mounts (<b>rundir</b>, <b>GFS_fix</b>) with these <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow/blob/main/SHiELD/instructions.md">instructions.</a></p>
-
+        <p>b) Set up mounts (<b>rundir</b>, <b>GFS_fix</b>) with an example:</p>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/global_nest_Ida.zip">Hurricane Ida case</a><br>
+        <a href="https://kaiyuanc.mycpanel.princeton.edu/GFS_fix.zip">GFS fix files</a><br>
+        <p></p>
+       
         <p>c) Run:</p>
         <pre><code>apptainer exec --bind
-          /PATH_TO_/2022010100_C48/:/rundir,
+          /PATH_TO_/global_nest_Ida/:/rundir,
           /PATH_TO_/GFS_fix/:/GFS_fix
-          shield_latest.sif cd /rundir && mpirun -np 6 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
+          /PATH_TO/shield_latest.sif cd /rundir && mpirun -np 6 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
 
         
         <h4>3. Postprocessing</h4>
@@ -232,12 +240,17 @@
         </li>
       </ul>
 
+      <p>All documentation details can be found in <a href="https://github.com/jzhang512/Containerized_SHiELD_Workflow">this user-friendly GitHub repository.</a></p>
+
       <ul>
         <li style="text-align: left;">
-        PATH_OF_CASE: absolute path of the case folder (e.g., /home/fv3/global_nest_Ida); PATH_OF_GFSFIX: absolute path of the GFS fix folder; PATH_OF_IMAGE: absolute path of the Singularity image (e.g., /home/fv3/shield_latest.sif).
+          PATH_TO: absolute path to the target directory/file.
         </li>
         <li style="text-align: left;">
-        This three-hour simulation should finish in a few minutes on x86 systems, e.g., Intel Core i7-12700.
+        Our images were created via multi-arch build. We support both ARM64 and AMD64 architectures.
+        </li>
+        <li style="text-align: left;">
+        For reference, our Hurricane Ida example (a three-hour simulation) should finish in a few minutes.
         </li>
         <li style="text-align: left;">
         Guide for FV3 and configuration (namelist) can be found <a href="https://www.gfdl.noaa.gov/wp-content/uploads/2020/02/FV3-Technical-Description.pdf">here</a>.
