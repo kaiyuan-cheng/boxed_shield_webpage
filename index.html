@@ -194,7 +194,7 @@
         <pre><code>apptainer exec --bind
           /PATH_TO_/global_nest_Ida/:/rundir,
           /PATH_TO_/GFS_fix/:/GFS_fix
-          /PATH_TO/shield_latest.sif cd /rundir && mpirun -np 8 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
+          /PATH_TO_/shield_latest.sif cd /rundir && mpirun -np 8 -oversubscribe SHiELD_nh.prod.32bit.x</code></pre>
         </li>
       </ul>
 
@@ -285,7 +285,7 @@
           /PATH_TO_/fix:/UFS_UTILS/fix,
           /PATH_TO_/workdir:/workdir,
           /PATH_TO_/GFSvOPER:/GFSvOPER
-          /PATH_TO/preprocessing_latest.sif /PATH_TO_/preprocessing_entrypoint.sh</code></pre>
+          /PATH_TO_/preprocessing_latest.sif /PATH_TO_/preprocessing_entrypoint.sh</code></pre>
 
         </li>
       </ul>
@@ -334,7 +334,7 @@
         
 		<h4>2. Run</h4>
 		<p>Regrid a C96 output onto 1- by 1-degree latitude-longitude grid</p>
-		<pre><code>docker run -v /PATH_TO/global_nest_Ida/:/workdir \
+		<pre><code>docker run -v /PATH_TO_/global_nest_Ida/:/workdir \
 		gfdlfv3/fre-nctools \
 		fregrid --input_mosaic ./INPUT/C96_coarse_mosaic.nc \
 		--nlon 360 --nlat 180 --interp_method conserve_order1 \
@@ -363,8 +363,8 @@
         
 		<h4>2. Run</h4>
 		<p>Regrid a C96 output onto 1- by 1-degree latitude-longitude grid</p>
-		<pre><code>apptainer exec --bind /PATH_TO/global_nest_Ida/:/workdir \
-		/PATH_TO/fre-nctools_latest.sif \
+		<pre><code>apptainer exec --bind /PATH_TO_/global_nest_Ida/:/workdir \
+		/PATH_TO_/fre-nctools_latest.sif \
 		fregrid --input_mosaic ./INPUT/C96_coarse_mosaic.nc \
 		--nlon 360 --nlat 180 --interp_method conserve_order1 \
 		--input_file atmos_sos \
